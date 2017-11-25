@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 
 from __future__ import print_function
@@ -39,9 +40,12 @@ def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {}
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
+    #sets the query to the result of the JSON question - properly structured
     yql_query = makeYqlQuery(req)
+    #sets the return value to "" if no request is recieved
     if yql_query is None:
         return {}
+    #Yahoo weather code
     yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
@@ -56,7 +60,7 @@ def makeYqlQuery(req):
     if city is None:
         return None
 
-    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
+    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "') and u='c'"
 
 
 def makeWebhookResult(data):
@@ -85,7 +89,7 @@ def makeWebhookResult(data):
     # print(json.dumps(item, indent=4))
 
     speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
-             ", the temperature is " + condition.get('temp') 
+             ", the temperature is " + condition.get('temp')
         #+ " " + units.get('temperature')
 
     print("Response:")
