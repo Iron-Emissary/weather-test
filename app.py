@@ -75,8 +75,10 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
+    query = data.get('query')
     if query is None:
         return {}
+
     result = query.get('results')
     if result is None:
         return {}
@@ -94,14 +96,14 @@ def makeWebhookResult(data):
     atmosphere = channel.get('atmosphere')
     astronomy = channel.get('astronomy')
     forecast = item.get('forecast')
-    toDay = forecast[0]
-    condition = item.get('condition')
-    if condition is None:
+    if forecast is None:
         return {}
+    toDay = forecast[0]
+    
     # print(json.dumps(item, indent=4))
 
     speech = "On the " + toDay.get('date') + " the weather in " + location.get('city') + " will be " + toDay.get('text') + \
-             ", with a high of " + toDay.get('high') + " " + units.get('temperature') + " and a low of " + toDay.get('low') + " " + units.get('temperature') + \
+             ", with a high of " + toDay.get('high') + " " + units.get('temperature') + " and a low of " + toDay.get('low') + " " + units.get('temperature')
 
 
     print("Response:")
