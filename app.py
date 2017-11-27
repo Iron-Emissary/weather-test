@@ -21,6 +21,7 @@ install_aliases()
 from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
 from urllib.error import HTTPError
+from datetime import datetime
 
 import json
 import os
@@ -77,7 +78,7 @@ def makeWebhookResult(data):
     query = data.get('query')
     if query is None:
         return {}
-
+    test = 3
     result = query.get('results')
     if result is None:
         return {}
@@ -95,7 +96,7 @@ def makeWebhookResult(data):
     atmosphere = channel.get('atmosphere')
     astronomy = channel.get('astronomy')
     forecast = item.get('forecast')
-    tomorrow = forecast[1]
+    tomorrow = forecast[test]
     condition = item.get('condition')
     if condition is None:
         return {}
