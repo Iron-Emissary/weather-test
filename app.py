@@ -77,10 +77,7 @@ def findForecastDate(req):
     result = req.get("result")
     parameters = result.get("parameters")
     date = parameters.get("date_number")
-    if date is None:
-        return None
 
-    return date
 
 
 
@@ -105,7 +102,7 @@ def makeWebhookResult(data):
     atmosphere = channel.get('atmosphere')
     astronomy = channel.get('astronomy')
     forecast = item.get('forecast')
-    tomorrow = forecast[findForecastDate(req)]
+    tomorrow = forecast[date]
     condition = item.get('condition')
     if condition is None:
         return {}
