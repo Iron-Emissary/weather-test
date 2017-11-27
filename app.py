@@ -73,14 +73,6 @@ def makeYqlQuery(req):
 
     return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "') and u ='c'"
 
-#def findForecastDate(req):
-#    result = req.get("result")
-#    parameters = result.get("parameters")
-#    date = parameters.get("date_number")
-#    return date
-
-
-
 
 def makeWebhookResult(data):
     query = data.get('query')
@@ -104,8 +96,6 @@ def makeWebhookResult(data):
     astronomy = channel.get('astronomy')
     forecast = item.get('forecast')
     toDay = forecast[0]
-    oneDay = forecast[1]
-    twoDay = forecast[2]
     condition = item.get('condition')
     if condition is None:
         return {}
@@ -113,10 +103,7 @@ def makeWebhookResult(data):
 
     speech = "On the " + toDay.get('date') + " the weather in " + location.get('city') + " will be " + toDay.get('text') + \
              ", with a high of " + toDay.get('high') + " " + units.get('temperature') + " and a low of " + toDay.get('low') + " " + units.get('temperature') + \
-             \n "On the " + oneDay.get('date') + " the weather in " + location.get('city') + " will be " + oneDay.get('text') + \
-             ", with a high of " + oneDay.get('high') + " " + units.get('temperature') + " and a low of " + oneDay.get('low') + " " + units.get('temperature') + \
-             "On the " + twoDay.get('date') + " the weather in " + location.get('city') + " will be " + twoDay.get('text') + \
-             ", with a high of " + twoDay.get('high') + " " + units.get('temperature') + " and a low of " + twoDay.get('low') + " " + units.get('temperature')
+
 
     print("Response:")
     print(speech)
