@@ -112,9 +112,11 @@ def makeWebhookResult(data):
     # print(json.dumps(item, indent=4))
 
     speech = "On the " + toDay.get('date') + " the weather in " + location.get('city') + " will be " + toDay.get('text') + \
-             ", with a high of " + toDay.get('high') + " " + units.get('temperature') + " and a low of " + toDay.get('low') + " " + units.get('temperature') + n\
+             ", with a high of " + toDay.get('high') + " " + units.get('temperature') + " and a low of " + toDay.get('low') + " " + units.get('temperature') + \
+             "                                                                         " + \
              "On the " + oneDay.get('date') + " the weather in " + location.get('city') + " will be " + oneDay.get('text') + \
-             ", with a high of " + oneDay.get('high') + " " + units.get('temperature') + " and a low of " + oneDay.get('low') + " " + units.get('temperature') + n\
+             ", with a high of " + oneDay.get('high') + " " + units.get('temperature') + " and a low of " + oneDay.get('low') + " " + units.get('temperature') + \
+             "                                                                         " + \
              "On the " + twoDay.get('date') + " the weather in " + location.get('city') + " will be " + twoDay.get('text') + \
              ", with a high of " + twoDay.get('high') + " " + units.get('temperature') + " and a low of " + twoDay.get('low') + " " + units.get('temperature')
 
