@@ -80,9 +80,9 @@ def checkDay(req):
     now = datetime.datetime.now()
     if date is None:
         return 0
-    proper_date = datetime.strptime("date, %Y-%m-%d")
-    current_date = now.strftime("%Y-%m-%d")
-    if proper_date == current_date:
+    #proper_date = datetime.strptime("date, %Y-%m-%d")
+    #current_date = now.strftime("%Y-%m-%d")
+    #if proper_date == current_date:
         return 0
     else:
         return 0
