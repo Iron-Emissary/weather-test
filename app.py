@@ -73,12 +73,24 @@ def makeYqlQuery(req):
 
     return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "') and u ='c'"
 
+def checkDay(req):
+    result = req.get("result")
+    parameters = result.get("parameters")
+    date = parameters.get("date")
+    if date is None:
+        return 0
+    proper_date = datetime.strptime("date, %Y-%m-%d")
+    current_date = now.strftime("%Y-%m-%d")
+    if proper_date == current_date:
+        return 0
+
+
 
 def makeWebhookResult(data):
     query = data.get('query')
     if query is None:
         return {}
-    test = 3
+    test = checkDay(req)
     result = query.get('results')
     if result is None:
         return {}
