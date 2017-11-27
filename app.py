@@ -77,6 +77,7 @@ def findForecastDate(req):
     result = req.get("result")
     parameters = result.get("parameters")
     date = parameters.get("date_number")
+    return date 
 
 
 
