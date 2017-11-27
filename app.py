@@ -83,11 +83,11 @@ def checkDay(req):
     #proper_date = datetime.strptime("date, %Y-%m-%d")
     #current_date = now.strftime("%Y-%m-%d")
     #if proper_date == current_date:
-        return 0
+        #return 0
     else:
         return 0
 
-
+test = checkDay(req)
 
 
 def makeWebhookResult(data):
