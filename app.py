@@ -105,7 +105,7 @@ def makeWebhookResult(data):
 
     speech = "On the " + toDay.get('date') + " the weather in " + location.get('city') + " will be " + toDay.get('text') + \
              ", with a high of " + toDay.get('high') + " " + units.get('temperature') + " and a low of " + toDay.get('low') + " " + units.get('temperature') + "." + \
-             "It is currently" + " " + condition.get('temp') + " " + units.get('temperature') + " with the air humidity at " + atmosphere.get('humidity') + " and the air pressure at " + atmosphere.get('pressure') + units.get('pressure') \
+             "It is currently" + " " + condition.get('temp') + " " + units.get('temperature') + " with the air humidity at " + atmosphere.get('humidity') + " and the air pressure at " + atmosphere.get('pressure') + units.get('pressure') + \
              "The wind is travelling at " + wind.get('speed') + " " + units.get('speed') + " with a wind chill of " + wind.get('chill') + "." + \
              "Today, the sun rises at" + astronomy.get('sunrise') + " and sets at " + astronomy.get('sunset')
 
